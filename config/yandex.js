@@ -9,7 +9,7 @@ const sequelize = new Sequelize('db1', 'candidate', process.env.PASSWORD, {
     dialectOptions: {
         ssl: {
             rejectUnauthorized: true,
-            ca: fs.readFileSync('C:/users/nodir/.postgresql/root.crt').toString()
+            ca: fs.readFileSync('./root.crt').toString()
         }
     },
     logging: false

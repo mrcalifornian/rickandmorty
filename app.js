@@ -4,11 +4,13 @@ const axios = require('axios');
 
 let pushData = async () => {
     try {
-        await Character.destroy({ truncate: true });
-        console.log('Table cleared');
+        let alldata = await Character.findAll();
+        if (alldata.length > 0) {
+            await Character.destroy({ truncate: true });
+            console.log('Table cleared');
+        }
 
         let allChars = [];
-
         let data = await axios.get('https://rickandmortyapi.com/api/character/');
 
         let pages = data.data.info.pages;
